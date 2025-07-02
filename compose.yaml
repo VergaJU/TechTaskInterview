@@ -1,0 +1,26 @@
+services:
+  torch-gpu:
+    build:
+      context: .
+      dockerfile: containers/torch/Dockerfile
+    image: torch-image
+    container_name: torch_gpu
+    volumes:
+      - .:/workspace
+    working_dir: /workspace
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: [gpu]
+    stdin_open: true
+    tty: true
+
+  torch-cpu:
+    image: torch-image  
+    container_name: torch_cpu
+    volumes:
+      - .:/workspace
+    working_dir: /workspace
+    stdin_open: true
+    tty: true
