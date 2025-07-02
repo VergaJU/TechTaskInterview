@@ -13,7 +13,7 @@ data_dir = 'Data/'
 adata = sc.read_h5ad(data_dir + 'dataset.h5ad')
 
 # find highly variable genes
-sc.pp.highly_variable_genes(adata, n_top_genes=1000) 
+sc.pp.highly_variable_genes(adata, n_top_genes=2000) 
 adata_subset = adata[:, adata.var['highly_variable']].copy()
 
 # get expression df
