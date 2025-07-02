@@ -1,8 +1,10 @@
 services:
   torch-gpu:
+    profiles:
+      - torch_gpu
     build:
       context: .
-      dockerfile: containers/torch/Dockerfile
+      dockerfile: containers/torch_env/Dockerfile
     image: torch-image
     container_name: torch_gpu
     volumes:
@@ -17,6 +19,8 @@ services:
     tty: true
 
   torch-cpu:
+    profiles:
+      - torch_cpu
     image: torch-image  
     container_name: torch_cpu
     volumes:

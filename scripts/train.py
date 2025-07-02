@@ -52,7 +52,7 @@ best_batch_size = best_params['batch_size']
 # Train the final model
 final_model = Autoencoder(input_dim, best_latent_dim, best_hidden_dims, best_dropout_rate).to(device)
 final_criterion = nn.MSELoss()
-final_optimizer = optim.Adam(final_model.parameters(), lr=best_lr)
+final_optimizer = optim.Adam(final_model.parameters(), lr=best_lr, weight_decay=1e-5)
 
 # Data Loaders for final training WITH validation for early stopping
 train_dataset_final = GeneExpressionDataset(X_train_tensor)
@@ -61,11 +61,11 @@ train_loader_final = DataLoader(train_dataset_final, batch_size=best_batch_size,
 val_loader_final = DataLoader(val_dataset_final, batch_size=best_batch_size, shuffle=False, num_workers=loader_workers)
 
 # --- Early Stopping Parameters ---
-patience = 20 
-min_delta = 1e-4 # Minimum change
+patience = 100
+min_delta = 1e-5 # Minimum change
 
 # --- Training Parameters ---
-MAX_N_EPOCHS = 500 
+MAX_N_EPOCHS = 1000 
 
 
 print("\nTraining final model with best hyperparameters and Early Stopping...")
@@ -85,7 +85,7 @@ for epoch in range(MAX_N_EPOCHS):
         loss = final_criterion(recon_x, batch)
         loss.backward()
         final_optimizer.step()
-        total_train_loss += loss.item()
+        total_train_loss += loss.detach().item()
     avg_train_loss = total_train_loss / len(train_loader_final)
 
     # --- Validation Phase ---
@@ -96,7 +96,7 @@ for epoch in range(MAX_N_EPOCHS):
             batch = batch.to(device)
             recon_x, _ = final_model(batch)
             loss = final_criterion(recon_x, batch)
-            total_val_loss += loss.item()
+            total_val_loss += loss.detach().item()
     avg_val_loss = total_val_loss / len(val_loader_final)
 
     # --- Early Stopping Check ---

@@ -1,0 +1,6 @@
+batch_size: 256
+dropout_rate: 0.08701203259111806
+h_dim_0: 1333
+latent_dim: 254
+lr: 0.0005254017140180559
+n_hidden_layers: 1

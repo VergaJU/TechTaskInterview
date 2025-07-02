@@ -64,7 +64,7 @@ def objective(trial: optuna.Trial, optuna_parameters, input_dim, loader_workers)
     # --- Model Training ---
     model = Autoencoder(input_dim, latent_dim, hidden_dims, dropout_rate).to(device)
     criterion = nn.MSELoss() # Mean Squared Error Loss for reconstruction
-    optimizer = optim.Adam(model.parameters(), lr=lr) # Adam optimizer
+    optimizer = optim.Adam(model.parameters(), lr=lr, weight_decay=1e-5) # Adam optimizer
 
     # Data Loaders
     train_dataset = GeneExpressionDataset(X_train_tensor)
@@ -73,7 +73,7 @@ def objective(trial: optuna.Trial, optuna_parameters, input_dim, loader_workers)
     val_loader = DataLoader(val_dataset, batch_size=batch_size, shuffle=False, num_workers=loader_workers)
 
     # Training loop 
-    N_EPOCHS = 50
+    N_EPOCHS = 20
 
     for epoch in range(N_EPOCHS):
         model.train()
@@ -85,7 +85,7 @@ def objective(trial: optuna.Trial, optuna_parameters, input_dim, loader_workers)
             loss = criterion(recon_x, batch)
             loss.backward()
             optimizer.step()
-            total_train_loss += loss.item()
+            total_train_loss += loss.detach().item()
 
         # Validation step
         model.eval()
@@ -95,7 +95,7 @@ def objective(trial: optuna.Trial, optuna_parameters, input_dim, loader_workers)
                 batch = batch.to(device)
                 recon_x, _ = model(batch)
                 loss = criterion(recon_x, batch)
-                total_val_loss += loss.item()
+                total_val_loss += loss.detach().item()
 
         avg_val_loss = total_val_loss / len(val_loader)
 

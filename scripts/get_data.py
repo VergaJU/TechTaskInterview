@@ -8,7 +8,7 @@ import anndata as ad
 
 
 
-outdir = '../Data/'
+outdir = 'Data/'
 
 
 # Download expression data
@@ -48,7 +48,7 @@ for file in os.listdir(outdir):
         os.remove(os.path.join(outdir, file))
 
 # Load the expression data
-df = pd.read_csv(expr_file, index_col=0)
+df = pd.read_csv(expr_file[:-3], index_col=0)
 
 
 # Average expression data across replicates
@@ -80,7 +80,7 @@ def get_meta(path):
     metadata = pd.DataFrame(meta_dict)
     return metadata
 
-metadata = pd.concat([get_meta(p) for p in meta_files],axis=0)
+metadata = pd.concat([get_meta(p[:-3]) for p in meta_files],axis=0)
 
 # Select common samples
 
