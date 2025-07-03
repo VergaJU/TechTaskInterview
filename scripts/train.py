@@ -1,7 +1,5 @@
 #!/usr/bin/python3
-import pandas as pd
-import numpy as np
-import optuna
+
 import torch
 import torch.nn as nn
 import torch.optim as optim
@@ -9,7 +7,6 @@ from torch.utils.data import DataLoader
 import pickle
 import yaml
 
-import sys
 import os
 
 

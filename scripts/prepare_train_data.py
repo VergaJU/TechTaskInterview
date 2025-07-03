@@ -12,8 +12,13 @@ data_dir = 'Data/'
 
 adata = sc.read_h5ad(data_dir + 'dataset.h5ad')
 
+# load parameters
+with open('optuna_parameter.yaml', "r") as f:
+    optuna_parameters=yaml.safe_load(f)
+
+
 # find highly variable genes
-sc.pp.highly_variable_genes(adata, n_top_genes=2000) 
+sc.pp.highly_variable_genes(adata, n_top_genes=optuna_parameters['hvg']) 
 adata_subset = adata[:, adata.var['highly_variable']].copy()
 
 # get expression df

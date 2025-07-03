@@ -1,6 +1,5 @@
 #!/usr/bin/python3
-import pandas as pd
-import numpy as np
+
 import optuna
 import torch
 import torch.nn as nn
@@ -9,8 +8,7 @@ from torch.utils.data import DataLoader
 import pickle
 import yaml
 
-import sys
-import os
+
 
 # Get absolute path to AE directory and add it to sys.path
 # ae_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'AE'))
@@ -47,19 +45,25 @@ def objective(trial: optuna.Trial, optuna_parameters, input_dim, loader_workers)
     n_hidden_layers = trial.suggest_int('n_hidden_layers',*optuna_parameters["n_hidden_layers"]) # Number hidden layers
 
 
-    hidden_dims=[]
+
+    hidden_dims = []
+
+    possible_layer_sizes = sorted(optuna_parameters["hidden_dims"], reverse=True)
+    # This variable will hold the size of the previously added layer
+    last_layer_size = float('inf') 
 
     for i in range(n_hidden_layers):
-         # Suggest dimensions between the current upper bound and latent_dim+buffer
-         # relative to previous/next layer.
-        if i == 0: # First hidden layer
-             dim = trial.suggest_int(f'h_dim_{i}', int(latent_dim * 1.5), int(input_dim * 0.8))
-        else: # Subsequent hidden layers
-             # Ensure next layer is smaller than previous
-             # Use the size of the previously suggested layer
-             prev_dim = hidden_dims[-1]
-             dim = trial.suggest_int(f'h_dim_{i}', int(latent_dim * 1.1), int(prev_dim * 0.9))
-        hidden_dims.append(dim)
+        # Create a list of choices that are strictly smaller than the previous layer
+        available_choices = [size for size in possible_layer_sizes if size < last_layer_size]
+
+        if not available_choices:
+            raise optuna.exceptions.TrialPruned()
+            
+        # Suggest a layer size from the valid, available choices
+        layer_size = trial.suggest_categorical(f'hidden_layer_{i}_size', available_choices)
+        
+        hidden_dims.append(layer_size)
+        last_layer_size = layer_size
 
     # --- Model Training ---
     model = Autoencoder(input_dim, latent_dim, hidden_dims, dropout_rate).to(device)
@@ -114,7 +118,7 @@ study = optuna.create_study(direction='minimize', pruner=optuna.pruners.MedianPr
 print("Starting Optuna optimization...")
 # Run the optimization for a number of trials
 # Adjust n_trials based on available time and computational resources
-study.optimize(lambda trial: objective(trial, optuna_parameters, input_dim, loader_workers),  n_trials=100, timeout=60*60*2) # 100 trials, max 2 hours
+study.optimize(lambda trial: objective(trial, optuna_parameters, input_dim, loader_workers),  n_trials=30, timeout=60*60*2) # 100 trials, max 2 hours
 print("\nOptimization finished.")
 print("Best trial:")
 trial = study.best_trial

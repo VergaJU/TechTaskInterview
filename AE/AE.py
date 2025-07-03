@@ -15,6 +15,24 @@ class GeneExpressionDataset(data.Dataset):
     def __getitem__(self, index):
         return self.data_tensor[index]
 
+
+
+class HiddenBlock(nn.Module):
+    def __init__(self, in_dim, out_dim, dropout_rate=0.0):
+        super(HiddenBlock, self).__init__()
+        layers = [
+            nn.Linear(in_dim, out_dim),
+            nn.BatchNorm1d(out_dim),
+            nn.ReLU()
+        ]
+        if dropout_rate > 0:
+            layers.append(nn.Dropout(dropout_rate))
+        self.block = nn.Sequential(*layers)
+
+    def forward(self, x):
+        return self.block(x)
+    
+
 # Define the Autoencoder Model
 class Autoencoder(nn.Module):
     def __init__(self, input_dim, latent_dim, hidden_dims, dropout_rate):
@@ -24,12 +42,8 @@ class Autoencoder(nn.Module):
         encoder_layers = []
         current_dim = input_dim
         for h_dim in hidden_dims: # Create layers for each hidden layer
-            encoder_layers.append(nn.Linear(current_dim, h_dim))
-            encoder_layers.append(nn.ReLU()) # ReLU activation
-            if dropout_rate > 0:
-                 encoder_layers.append(nn.Dropout(dropout_rate))
+            encoder_layers.append(HiddenBlock(current_dim, h_dim, dropout_rate))
             current_dim = h_dim
-
         # Latent Space
         encoder_layers.append(nn.Linear(current_dim, latent_dim))
 
@@ -40,11 +54,7 @@ class Autoencoder(nn.Module):
         current_dim = latent_dim
         # Reverse the hidden layer dimensions for the decoder
         for h_dim in reversed(hidden_dims):
-            decoder_layers.append(nn.Linear(current_dim, h_dim))
-            decoder_layers.append(nn.ReLU()) # ReLU activation
-            if dropout_rate > 0:
-                 decoder_layers.append(nn.Dropout(dropout_rate))
-
+            decoder_layers.append(HiddenBlock(current_dim, h_dim, dropout_rate))
             current_dim = h_dim
 
         # Output layer
