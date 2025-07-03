@@ -6,6 +6,7 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
 import torch
 import pickle
+import yaml
 
 
 data_dir = 'Data/'

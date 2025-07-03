@@ -3,5 +3,5 @@ batch_size: 64
 dropout_rate: 0.3
 h_dim_0: 512
 latent_dim: 128
-lr: 1e-5
+lr: 1.0e-05
 n_hidden_layers: 1

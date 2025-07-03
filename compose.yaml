@@ -21,7 +21,7 @@ services:
   torch-cpu:
     profiles:
       - torch_cpu
-    image: torch-image  
+    image: torch-image
     container_name: torch_cpu
     volumes:
       - .:/workspace
