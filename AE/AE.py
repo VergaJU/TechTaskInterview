@@ -22,7 +22,7 @@ class HiddenBlock(nn.Module):
         super(HiddenBlock, self).__init__()
         layers = [
             nn.Linear(in_dim, out_dim),
-            nn.BatchNorm1d(out_dim),
+            # nn.BatchNorm1d(out_dim),
             nn.ReLU()
         ]
         if dropout_rate > 0:
@@ -66,6 +66,12 @@ class Autoencoder(nn.Module):
         z = self.encoder(x)
         recon_x = self.decoder(z)
         return recon_x, z # Return both reconstruction and latent vector
+
+    # def forward(self, x, noise_std=0.1):
+    #     noisy_x = x + torch.randn_like(x) * noise_std  # add Gaussian noise
+    #     z = self.encoder(noisy_x)
+    #     recon_x = self.decoder(z)
+    #     return recon_x, z
 
     def encode(self, x):
         return self.encoder(x)

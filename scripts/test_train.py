@@ -19,7 +19,7 @@ with open('Data/training_data.pkl','rb') as f:
 
 X_train_tensor = data['X_train_tensor']
 X_val_tensor = data['X_val_tensor']
-input_dim = data['input_dim']
+input_dim = X_train_tensor.shape[1]
 loader_workers=4
 
 
@@ -58,7 +58,7 @@ train_loader_final = DataLoader(train_dataset_final, batch_size=best_batch_size,
 val_loader_final = DataLoader(val_dataset_final, batch_size=best_batch_size, shuffle=False, num_workers=loader_workers)
 
 # --- Early Stopping Parameters ---
-patience = 100
+patience = 25
 min_delta = 1e-5 # Minimum change
 
 # --- Training Parameters ---

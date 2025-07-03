@@ -18,12 +18,13 @@ with open('optuna_parameter.yaml', "r") as f:
     optuna_parameters=yaml.safe_load(f)
 
 
-# find highly variable genes
-sc.pp.highly_variable_genes(adata, n_top_genes=optuna_parameters['hvg']) 
-adata_subset = adata[:, adata.var['highly_variable']].copy()
+if optuna_parameters['hvg'] > 0:
+    # find highly variable genes
+    sc.pp.highly_variable_genes(adata, n_top_genes=optuna_parameters['hvg']) 
+    adata = adata[:, adata.var['highly_variable']].copy()
 
 # get expression df
-df=sc.get.obs_df(adata_subset, keys=adata_subset.var_names.tolist())
+df=sc.get.obs_df(adata, keys=adata.var_names.tolist())
 
 # scale the data
 ss=StandardScaler()
