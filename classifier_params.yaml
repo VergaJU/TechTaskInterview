@@ -1,0 +1,6 @@
+hvg: 10000
+batch_size: 128
+dropout_rate: 0.2
+h_dim_0: 64
+lr: 2.0e-4
+n_hidden_layers: 1
