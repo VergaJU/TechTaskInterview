@@ -7,6 +7,7 @@ from sklearn.model_selection import train_test_split
 import torch
 import pickle
 import yaml
+import os
 
 
 data_dir = 'Data/'
@@ -22,6 +23,12 @@ if optuna_parameters['hvg'] > 0:
     # find highly variable genes
     sc.pp.highly_variable_genes(adata, n_top_genes=optuna_parameters['hvg']) 
     adata = adata[:, adata.var['highly_variable']].copy()
+    hvg=adata.var
+    hvg=hvg[hvg['highly_variable']].index.tolist()
+    genes= hvg
+else:
+    # use all genes
+    genes = adata.var_names.tolist()
 
 # get expression df
 df=sc.get.obs_df(adata, keys=adata.var_names.tolist())
@@ -29,6 +36,15 @@ df=sc.get.obs_df(adata, keys=adata.var_names.tolist())
 # scale the data
 ss=StandardScaler()
 train_data = ss.fit_transform(df)
+
+
+# ocreate models directory
+if not os.path.exists('models'):
+    os.makedirs('models')
+
+with open('models/standard_scaler.pkl', 'wb') as f:
+    pickle.dump(ss, f)
+
 train_df=pd.DataFrame(train_data, index=df.index, columns=df.columns)
 
 
@@ -56,7 +72,8 @@ files={
     'n_samples_train':n_samples_train,
     'n_samples_val':n_samples_val,
     'X_train_tensor':X_train_tensor,
-    'X_val_tensor':X_val_tensor
+    'X_val_tensor':X_val_tensor,
+    'genes':genes,
     
 }
 

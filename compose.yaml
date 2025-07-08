@@ -30,9 +30,12 @@ services:
     tty: true
 
   jupyter:
-      image: vergaju/bm_py_env
+      image: jupyter_torch
       profiles:
         - jupyter
+      build:
+        context: .
+        dockerfile: containers/jupyter_env/Dockerfile
       container_name: jupyter_env
       volumes:
         - ./:/home/jacopo/work

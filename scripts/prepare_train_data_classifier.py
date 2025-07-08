@@ -3,7 +3,6 @@
 import pandas as pd
 import numpy as np
 import scanpy as sc
-from sklearn.preprocessing import StandardScaler, OneHotEncoder
 from sklearn.model_selection import train_test_split
 import torch
 import pickle
