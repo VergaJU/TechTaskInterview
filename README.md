@@ -1,5 +1,5 @@
 <div align="left" style="position: relative;">
-<img src="./asset/logo.svg" align="right" width="30%" style="margin: 50px 0 0 20px;">
+<img src="./asset/logo.svg" align="right" width="30%" style="margin: 100px 0 0 20px;">
 <h1>TechTaskInterview</h1>
 <p align="left">
 	<em><code>❯ Repository including the code for prearing to the interview with Dr. Sebastiano Panichella and Dr. Saša Miladinović </code></em>
