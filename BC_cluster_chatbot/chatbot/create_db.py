@@ -24,8 +24,8 @@ logging.basicConfig(
     ]
 )
 
-DEFAULT_CORPUS_DIR = '/app/corpus'
-DEFAULT_CHROMA_DB_DIR = '/app/chroma_db'
+DEFAULT_CORPUS_DIR = '/app/chatbot/corpus'
+DEFAULT_CHROMA_DB_DIR = '/app/chatbot/chroma_db'
 DEFAULT_EMBEDDINGS_MODEL = 'models/embedding-001'  # Google Generative AI Embeddings
 DEFAULT_CHUNK_SIZE = 1500
 DEFAULT_CHUNK_OVERLAP = 300

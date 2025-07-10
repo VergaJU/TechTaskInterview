@@ -100,7 +100,7 @@ class PredictorNode(node):
         if isinstance(patient_expression, pd.DataFrame):
             expression_path = os.path.join(session_dir, 'patient_expression.csv')
             patient_expression.to_csv(expression_path, index=False)
-        notebook_path = '/app/notebooks/Sample_report.ipynb'
+        notebook_path = '/app/chatbot/notebooks/Sample_report.ipynb'
         output_path = os.path.join(session_dir, 'Sample_report_' + session_id + '.ipynb')
         logging.info(f"Compiling notebook: {notebook_path} to {output_path}")
 

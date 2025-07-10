@@ -13,4 +13,4 @@ ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 WORKDIR /app
 EXPOSE 8501
-CMD ["streamlit", "run", "/app/BC_cluster_chatbot/app.py", "--server.port=8501", "--server.address=0.0.0.0"]
+CMD ["streamlit", "run", "/app/chatbot/BC_cluster_chatbot/app.py", "--server.port=8501", "--server.address=0.0.0.0"]

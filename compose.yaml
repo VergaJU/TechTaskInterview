@@ -58,8 +58,8 @@ services:
       dockerfile: containers/chatbot/Dockerfile
     container_name: chatbot_container
     volumes:
-      - .:/app
-    working_dir: /app
+      - .:/app/chatbot
+    working_dir: /app/chatbot
     ports:
       - "8890:8501"
     stdin_open: true

@@ -50,8 +50,10 @@ if 'vector_store' not in st.session_state or st.session_state['vector_store'] is
 
 
 
+
+
 st.set_page_config(
-    page_title="BC cluster chatbot",
+    page_title="Breast Cancer Cluster Chatbot",
     layout="wide",
     initial_sidebar_state="auto",
     menu_items=None,
@@ -77,9 +79,24 @@ with st.sidebar:
     nhg = st.selectbox("Nuclear Grade", ["NA", "G1", "G2", "G3"], index=0)
     pam50 = st.selectbox("PAM50", ['NA', 'LumA', 'LumB', 'HER2', 'Basal', 'Normal'], index=0)
 
-st.title("BC Cluster Chatbot")
-st.write("This is a chatbot for breast cancer cluster analysis. Please upload the patient expression profile and fill in the details in the sidebar.")
+st.title("Breast Cancer Cluster Chatbot")
 
+st.markdown("""
+Welcome to the **Breast Cancer Cluster Chatbot** — an interactive assistant designed to help you explore and interpret **patient-specific clustering results** based on gene expression and clinical data.
+
+**How it works:**
+
+- Upload a **gene expression profile** for a patient.
+- Provide **clinical details** (e.g., age, tumor characteristics) using the sidebar.
+- Ask questions about the **patient’s cluster**, associated **biological pathways**, or broader **breast cancer knowledge**.
+
+The chatbot uses:
+- A **predictive model** to classify the patient and interpret results (including SHAP and GSEA).
+- A **retrieval system** to answer questions about clusters, PAM50 subtypes, NHG grades, and survival data.
+- A **literature node** for general breast cancer insights from scientific sources.
+
+Each user session is isolated and secure. All figures and results are processed and shown only for your session.
+""")
 
 
 
