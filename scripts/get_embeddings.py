@@ -8,7 +8,8 @@ import pickle
 import yaml
 import scanpy as sc
 import os
-
+import sys
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from AE.AE import Autoencoder, GeneExpressionDataset
 
@@ -33,7 +34,7 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 print(f"Using device: {device}")
 
 # load parameters
-with open('test_params.yaml', "r") as f:
+with open('autoencoder_params.yaml', "r") as f:
     best_params=yaml.safe_load(f)
 
 

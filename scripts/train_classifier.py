@@ -11,7 +11,8 @@ import numpy as np
 import pandas as pd
 import os
 
-
+import sys
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from AE.AE import Autoencoder, GeneExpressionDataset
 from AE.AEclassifier import ClassificationDataset, AEClassifier
 
@@ -35,7 +36,7 @@ print(f"Using device: {device}")
 
 
 # load parameters
-with open('test_params.yaml', "r") as f:
+with open('autoencoder_params.yaml', "r") as f:
     best_params=yaml.safe_load(f)
 
 
