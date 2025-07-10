@@ -5,6 +5,50 @@ import uuid
 from google import genai
 from langchain_google_genai import ChatGoogleGenerativeAI
 from chatbot.nodes import master_node 
+from chatbot.workflow import ChatWorkflow
+#### create or load vector database:
+
+
+from typing import TypedDict # For GraphState type hinting
+
+# Import the database manager class
+from chatbot.create_db import HtmlVectorDatabaseManager, DEFAULT_CORPUS_DIR, DEFAULT_CHROMA_DB_DIR, DEFAULT_EMBEDDINGS_MODEL, DEFAULT_CHUNK_SIZE, DEFAULT_CHUNK_OVERLAP
+
+
+CORPUS_DIR = os.getenv("CORPUS_DIR", DEFAULT_CORPUS_DIR)
+CHROMA_DB_DIR = os.getenv("CHROMA_DB_DIR", DEFAULT_CHROMA_DB_DIR)
+EMBEDDINGS_MODEL = os.getenv("EMBEDDINGS_MODEL", DEFAULT_EMBEDDINGS_MODEL)
+LLM_MODEL_NAME = os.getenv("MODEL", "gemini-2.0-flash")
+CHUNK_SIZE = int(os.getenv("CHUNK_SIZE", DEFAULT_CHUNK_SIZE))
+CHUNK_OVERLAP = int(os.getenv("CHUNK_OVERLAP", DEFAULT_CHUNK_OVERLAP))
+K_RETRIEVAL = int(os.getenv("K_RETRIEVAL", 5)) 
+
+
+if 'db_manager' not in st.session_state:
+    print("Initializing HtmlVectorDatabaseManager...")
+    st.session_state['db_manager'] = HtmlVectorDatabaseManager(
+        corpus_dir=CORPUS_DIR,
+        chroma_db_dir=CHROMA_DB_DIR,
+        embeddings_model_name=EMBEDDINGS_MODEL,
+        chunk_size=CHUNK_SIZE,
+        chunk_overlap=CHUNK_OVERLAP
+    )
+    print("HtmlVectorDatabaseManager stored in session_state.")
+
+
+if 'vector_store' not in st.session_state or st.session_state['vector_store'] is None:
+    print("Initializing or loading vector store...")
+    # initialize_vector_store returns the Chroma instance or None on failure
+    st.session_state['vector_store'] = st.session_state['db_manager'].initialize_vector_store(force_reindex=False)
+
+    if st.session_state['vector_store'] is None:
+        st.error("Failed to initialize or load vector database. RAG functionality will be unavailable.")
+        # You might want to stop the app or disable related features here
+    else:
+        print("Vector store initialized/loaded and stored in session_state.")
+
+
+
 
 st.set_page_config(
     page_title="BC cluster chatbot",
@@ -13,6 +57,8 @@ st.set_page_config(
     menu_items=None,
 )
 
+if "messages" not in st.session_state:
+    st.session_state.messages = []
 
 # Only assign a UUID if one doesn't already exist in this session
 if "user_id" not in st.session_state:
@@ -34,11 +80,7 @@ with st.sidebar:
 st.title("BC Cluster Chatbot")
 st.write("This is a chatbot for breast cancer cluster analysis. Please upload the patient expression profile and fill in the details in the sidebar.")
 
-question = st.text_input(
-    "Ask information about patients cluster analysis",
-    placeholder="Which cluster the patient belongs to?",
-    disabled=not patient_expression,
-)
+
 
 
 if patient_expression:
@@ -57,8 +99,30 @@ clinical_data = {
     "pam50": pam50
 }
 
+for msg in st.session_state.messages:
+    if msg["role"] == "user":
+        st.chat_message("user").markdown(msg["content"])
+    else:
+        st.chat_message("assistant").markdown(msg["content"], unsafe_allow_html=True)
 
+
+question = st.chat_input(
+    "Ask information about patients cluster analysis",
+)
 
 if question:
-    response=master_node.get_node(question)
-    st.write(response)
+    st.session_state.messages.append({"role": "user", "content": question})
+    st.chat_message("user").markdown(question)
+    state = {
+        "session_id": st.session_state.user_id,
+        "expression_data": patient_expression,
+        "clinical_data": clinical_data,
+        "messages": question,
+        "vector_db": st.session_state.get('vector_store', None),
+        "k_retrieval": K_RETRIEVAL,
+    }
+    workflow=ChatWorkflow()
+    result=workflow.run(state)
+    assistant_response = result.get("response", "")
+    st.session_state.messages.append({"role": "assistant", "content": assistant_response})
+    st.chat_message("assistant").markdown(assistant_response, unsafe_allow_html=True)

@@ -48,3 +48,19 @@ services:
         - NB_USER=jacopo
         - CHOWN_HOME=yes
       working_dir: /home/jacopo
+
+  chatbot:
+    image: chatbot_image
+    profiles:
+      - chatbot
+    build:
+      context: .
+      dockerfile: containers/chatbot/Dockerfile
+    container_name: chatbot_container
+    volumes:
+      - .:/app
+    working_dir: /app
+    ports:
+      - "8890:8501"
+    stdin_open: true
+    tty: true

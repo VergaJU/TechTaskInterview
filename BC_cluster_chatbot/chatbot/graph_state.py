@@ -20,4 +20,6 @@ class GraphState(TypedDict):
     response: Optional[AIMessage]
     original_query: Optional[HumanMessage]
     answer_source: Optional[str]
-    history: List[BaseMessage] 
+    history: List[BaseMessage]
+    vector_db: Optional[Any] 
+    k_retrieval: int

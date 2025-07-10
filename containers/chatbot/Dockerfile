@@ -6,6 +6,7 @@ RUN pip install jupyter lifelines igraph leidenalg shap gseapy lxml
 RUN pip install streamlit
 RUN pip install "langgraph==0.3.21" "google-genai==0.8.0" "langchain==0.3.24" "langchain-community==0.3.22" "langchain-core==0.3.56" "langchain-google-genai==2.1.2" "langchain-text-splitters==0.3.8" "google-genai==0.8.0"
 RUN pip install python-dotenv papermill
+RUN pip install chromadb
 
 # Set environment variables to avoid buffer issues
 ENV PYTHONDONTWRITEBYTECODE=1

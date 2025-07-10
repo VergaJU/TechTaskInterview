@@ -14,6 +14,7 @@ class Prompts(Enum):
     master='MASTER'
     rag='RAG'
     predict='PREDICT'
+    literature='LITERATURE'
 
     def get_prompt(self):
         return prompts[f"{self.value}_PROMPT"]
