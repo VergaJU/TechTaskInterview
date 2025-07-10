@@ -1,5 +1,5 @@
 <div align="left" style="position: relative;">
-<img src="./asset/logo.svg" align="right" width="30%" style="margin: 100px 0 0 20px;">
+<img src="./asset/logo.svg" align="right" width="30%" style="margin: 100px 0 0 0px;">
 <h1>TechTaskInterview</h1>
 <p align="left">
 	<em><code>❯ Repository including the code for prearing to the interview with Dr. Sebastiano Panichella and Dr. Saša Miladinović </code></em>
@@ -174,15 +174,15 @@ Analysis:
 			<table>
 			<tr>
 				<td><b><a href='https://github.com/VergaJU/TechTaskInterview/blob/master/compose.yaml'>compose.yaml</a></b></td>
-				<td><code>❯ REPLACE-ME</code></td>
+				<td><code>❯ Orchestrate docker containers</code></td>
 			</tr>
 			<tr>
 				<td><b><a href='https://github.com/VergaJU/TechTaskInterview/blob/master/classifier_params.yaml'>classifier_params.yaml</a></b></td>
-				<td><code>❯ REPLACE-ME</code></td>
+				<td><code>❯ Parameters for the classifier head</code></td>
 			</tr>
 			<tr>
 				<td><b><a href='https://github.com/VergaJU/TechTaskInterview/blob/master/autoencoder_params.yaml'>autoencoder_params.yaml</a></b></td>
-				<td><code>❯ REPLACE-ME</code></td>
+				<td><code>❯ Parameters autoencoder</code></td>
 			</tr>
 			</table>
 		</blockquote>
@@ -193,7 +193,7 @@ Analysis:
 			<table>
 			<tr>
 				<td><b><a href='https://github.com/VergaJU/TechTaskInterview/blob/master/BC_cluster_chatbot/app.py'>app.py</a></b></td>
-				<td><code>❯ REPLACE-ME</code></td>
+				<td><code>❯ Streamlit app</code></td>
 			</tr>
 			</table>
 			<details>
@@ -202,35 +202,35 @@ Analysis:
 					<table>
 					<tr>
 						<td><b><a href='https://github.com/VergaJU/TechTaskInterview/blob/master/BC_cluster_chatbot/chatbot/nodes_constructor.py'>nodes_constructor.py</a></b></td>
-						<td><code>❯ REPLACE-ME</code></td>
+						<td><code>❯ Define nodes agentich architecture</code></td>
 					</tr>
 					<tr>
 						<td><b><a href='https://github.com/VergaJU/TechTaskInterview/blob/master/BC_cluster_chatbot/chatbot/prompts.yaml'>prompts.yaml</a></b></td>
-						<td><code>❯ REPLACE-ME</code></td>
+						<td><code>❯ Prompts</code></td>
 					</tr>
 					<tr>
 						<td><b><a href='https://github.com/VergaJU/TechTaskInterview/blob/master/BC_cluster_chatbot/chatbot/workflow.py'>workflow.py</a></b></td>
-						<td><code>❯ REPLACE-ME</code></td>
+						<td><code>❯ LangGraph architecture</code></td>
 					</tr>
 					<tr>
 						<td><b><a href='https://github.com/VergaJU/TechTaskInterview/blob/master/BC_cluster_chatbot/chatbot/graph_state.py'>graph_state.py</a></b></td>
-						<td><code>❯ REPLACE-ME</code></td>
+						<td><code>❯ Graph State</code></td>
 					</tr>
 					<tr>
 						<td><b><a href='https://github.com/VergaJU/TechTaskInterview/blob/master/BC_cluster_chatbot/chatbot/nodes.py'>nodes.py</a></b></td>
-						<td><code>❯ REPLACE-ME</code></td>
+						<td><code>❯ Initialize nodes with instructions and functions</code></td>
 					</tr>
 					<tr>
 						<td><b><a href='https://github.com/VergaJU/TechTaskInterview/blob/master/BC_cluster_chatbot/chatbot/prompts.py'>prompts.py</a></b></td>
-						<td><code>❯ REPLACE-ME</code></td>
+						<td><code>❯ Import prompts</code></td>
 					</tr>
 					<tr>
 						<td><b><a href='https://github.com/VergaJU/TechTaskInterview/blob/master/BC_cluster_chatbot/chatbot/create_db.py'>create_db.py</a></b></td>
-						<td><code>❯ REPLACE-ME</code></td>
+						<td><code>❯ Create vector DB for RAG</code></td>
 					</tr>
 					<tr>
 						<td><b><a href='https://github.com/VergaJU/TechTaskInterview/blob/master/BC_cluster_chatbot/chatbot/literature_functions.py'>literature_functions.py</a></b></td>
-						<td><code>❯ REPLACE-ME</code></td>
+						<td><code>❯ utils for literature nodeE</code></td>
 					</tr>
 					</table>
 				</blockquote>
@@ -243,31 +243,31 @@ Analysis:
 			<table>
 			<tr>
 				<td><b><a href='https://github.com/VergaJU/TechTaskInterview/blob/master/scripts/prepare_train_data.py'>prepare_train_data.py</a></b></td>
-				<td><code>❯ REPLACE-ME</code></td>
+				<td><code>❯ Prepare train test data</code></td>
 			</tr>
 			<tr>
 				<td><b><a href='https://github.com/VergaJU/TechTaskInterview/blob/master/scripts/prepare_train_data_classifier.py'>prepare_train_data_classifier.py</a></b></td>
-				<td><code>❯ REPLACE-ME</code></td>
+				<td><code>❯  Prepare train test data classifier</code></td>
 			</tr>
 			<tr>
 				<td><b><a href='https://github.com/VergaJU/TechTaskInterview/blob/master/scripts/get_data.py'>get_data.py</a></b></td>
-				<td><code>❯ REPLACE-ME</code></td>
+				<td><code>❯ Download data</code></td>
 			</tr>
 			<tr>
 				<td><b><a href='https://github.com/VergaJU/TechTaskInterview/blob/master/scripts/get_embeddings.py'>get_embeddings.py</a></b></td>
-				<td><code>❯ REPLACE-ME</code></td>
+				<td><code>❯ Extract embeddingf from the complete dataset</code></td>
 			</tr>
 			<tr>
 				<td><b><a href='https://github.com/VergaJU/TechTaskInterview/blob/master/scripts/train_classifier.py'>train_classifier.py</a></b></td>
-				<td><code>❯ REPLACE-ME</code></td>
+				<td><code>❯ Train</code></td>
 			</tr>
 			<tr>
 				<td><b><a href='https://github.com/VergaJU/TechTaskInterview/blob/master/scripts/train.py'>train.py</a></b></td>
-				<td><code>❯ REPLACE-ME</code></td>
+				<td><code>❯ Train</code></td>
 			</tr>
 			<tr>
 				<td><b><a href='https://github.com/VergaJU/TechTaskInterview/blob/master/scripts/make_shap.py'>make_shap.py</a></b></td>
-				<td><code>❯ REPLACE-ME</code></td>
+				<td><code>❯ Make SHAP explainer</code></td>
 			</tr>
 			</table>
 		</blockquote>
@@ -278,11 +278,11 @@ Analysis:
 			<table>
 			<tr>
 				<td><b><a href='https://github.com/VergaJU/TechTaskInterview/blob/master/AE/AE.py'>AE.py</a></b></td>
-				<td><code>❯ REPLACE-ME</code></td>
+				<td><code>❯ Autoencoder</code></td>
 			</tr>
 			<tr>
 				<td><b><a href='https://github.com/VergaJU/TechTaskInterview/blob/master/AE/AEclassifier.py'>AEclassifier.py</a></b></td>
-				<td><code>❯ REPLACE-ME</code></td>
+				<td><code>❯ Classifier head</code></td>
 			</tr>
 			</table>
 		</blockquote>
@@ -293,63 +293,43 @@ Analysis:
 			<table>
 			<tr>
 				<td><b><a href='https://github.com/VergaJU/TechTaskInterview/blob/master/notebooks/Basal-G3.ipynb'>Basal-G3.ipynb</a></b></td>
-				<td><code>❯ REPLACE-ME</code></td>
+				<td><code>❯ Basal-G3 report for RAG</code></td>
 			</tr>
 			<tr>
 				<td><b><a href='https://github.com/VergaJU/TechTaskInterview/blob/master/notebooks/Normal-G2.ipynb'>Normal-G2.ipynb</a></b></td>
-				<td><code>❯ REPLACE-ME</code></td>
-			</tr>
-			<tr>
-				<td><b><a href='https://github.com/VergaJU/TechTaskInterview/blob/master/notebooks/Untitled.ipynb'>Untitled.ipynb</a></b></td>
-				<td><code>❯ REPLACE-ME</code></td>
-			</tr>
-			<tr>
-				<td><b><a href='https://github.com/VergaJU/TechTaskInterview/blob/master/notebooks/Get_data.ipynb'>Get_data.ipynb</a></b></td>
-				<td><code>❯ REPLACE-ME</code></td>
+				<td><code>❯ Normal-G2report for RAG</code></td>
 			</tr>
 			<tr>
 				<td><b><a href='https://github.com/VergaJU/TechTaskInterview/blob/master/notebooks/Her2-G3.ipynb'>Her2-G3.ipynb</a></b></td>
-				<td><code>❯ REPLACE-ME</code></td>
+				<td><code>❯ Her2-G3 report for RAG</code></td>
 			</tr>
 			<tr>
 				<td><b><a href='https://github.com/VergaJU/TechTaskInterview/blob/master/notebooks/Her2-G2.ipynb'>Her2-G2.ipynb</a></b></td>
-				<td><code>❯ REPLACE-ME</code></td>
+				<td><code>❯ Her2-G2 report for RAG</code></td>
 			</tr>
 			<tr>
 				<td><b><a href='https://github.com/VergaJU/TechTaskInterview/blob/master/notebooks/Sample_report.ipynb'>Sample_report.ipynb</a></b></td>
-				<td><code>❯ REPLACE-ME</code></td>
+				<td><code>❯ Predict and report sample characteristics</code></td>
 			</tr>
 			<tr>
 				<td><b><a href='https://github.com/VergaJU/TechTaskInterview/blob/master/notebooks/Classifier_metrics.ipynb'>Classifier_metrics.ipynb</a></b></td>
-				<td><code>❯ REPLACE-ME</code></td>
-			</tr>
-			<tr>
-				<td><b><a href='https://github.com/VergaJU/TechTaskInterview/blob/master/notebooks/Untitled1.ipynb'>Untitled1.ipynb</a></b></td>
-				<td><code>❯ REPLACE-ME</code></td>
+				<td><code>❯ Rtraining classifier</code></td>
 			</tr>
 			<tr>
 				<td><b><a href='https://github.com/VergaJU/TechTaskInterview/blob/master/notebooks/LumA-G2.ipynb'>LumA-G2.ipynb</a></b></td>
-				<td><code>❯ REPLACE-ME</code></td>
-			</tr>
-			<tr>
-				<td><b><a href='https://github.com/VergaJU/TechTaskInterview/blob/master/notebooks/Cluster_annotation.ipynb'>Cluster_annotation.ipynb</a></b></td>
-				<td><code>❯ REPLACE-ME</code></td>
+				<td><code>❯ LumA-G2 report for RAG</code></td>
 			</tr>
 			<tr>
 				<td><b><a href='https://github.com/VergaJU/TechTaskInterview/blob/master/notebooks/Regression_clusters.ipynb'>Regression_clusters.ipynb</a></b></td>
-				<td><code>❯ REPLACE-ME</code></td>
+				<td><code>❯ Perform Cox regression on clusters</code></td>
 			</tr>
 			<tr>
 				<td><b><a href='https://github.com/VergaJU/TechTaskInterview/blob/master/notebooks/LumB-G3.ipynb'>LumB-G3.ipynb</a></b></td>
-				<td><code>❯ REPLACE-ME</code></td>
+				<td><code>❯ LumB-G3 report for RAG</code></td>
 			</tr>
 			<tr>
 				<td><b><a href='https://github.com/VergaJU/TechTaskInterview/blob/master/notebooks/Clustering_1.ipynb'>Clustering_1.ipynb</a></b></td>
-				<td><code>❯ REPLACE-ME</code></td>
-			</tr>
-			<tr>
-				<td><b><a href='https://github.com/VergaJU/TechTaskInterview/blob/master/notebooks/train_data.ipynb'>train_data.ipynb</a></b></td>
-				<td><code>❯ REPLACE-ME</code></td>
+				<td><code>❯ Annotate clusters</code></td>
 			</tr>
 			</table>
 		</blockquote>
@@ -363,7 +343,7 @@ Analysis:
 					<table>
 					<tr>
 						<td><b><a href='https://github.com/VergaJU/TechTaskInterview/blob/master/containers/chatbot/Dockerfile'>Dockerfile</a></b></td>
-						<td><code>❯ REPLACE-ME</code></td>
+						<td><code>❯ Chatbot container</code></td>
 					</tr>
 					</table>
 				</blockquote>
@@ -374,7 +354,7 @@ Analysis:
 					<table>
 					<tr>
 						<td><b><a href='https://github.com/VergaJU/TechTaskInterview/blob/master/containers/torch_env/Dockerfile'>Dockerfile</a></b></td>
-						<td><code>❯ REPLACE-ME</code></td>
+						<td><code>❯ Torch container</code></td>
 					</tr>
 					</table>
 				</blockquote>
@@ -385,7 +365,7 @@ Analysis:
 					<table>
 					<tr>
 						<td><b><a href='https://github.com/VergaJU/TechTaskInterview/blob/master/containers/jupyter_env/Dockerfile'>Dockerfile</a></b></td>
-						<td><code>❯ REPLACE-ME</code></td>
+						<td><code>❯ Jupyter container</code></td>
 					</tr>
 					</table>
 				</blockquote>
@@ -398,31 +378,31 @@ Analysis:
 			<table>
 			<tr>
 				<td><b><a href='https://github.com/VergaJU/TechTaskInterview/blob/master/corpus/LumA-G2.html'>LumA-G2.html</a></b></td>
-				<td><code>❯ REPLACE-ME</code></td>
+				<td><code>❯ LumA-G2</code></td>
 			</tr>
 			<tr>
 				<td><b><a href='https://github.com/VergaJU/TechTaskInterview/blob/master/corpus/LumB-G3.html'>LumB-G3.html</a></b></td>
-				<td><code>❯ REPLACE-ME</code></td>
+				<td><code>❯ LumB-G3</code></td>
 			</tr>
 			<tr>
 				<td><b><a href='https://github.com/VergaJU/TechTaskInterview/blob/master/corpus/Her2-G2.html'>Her2-G2.html</a></b></td>
-				<td><code>❯ REPLACE-ME</code></td>
+				<td><code>❯ Her2-G2</code></td>
 			</tr>
 			<tr>
 				<td><b><a href='https://github.com/VergaJU/TechTaskInterview/blob/master/corpus/Normal-G2.html'>Normal-G2.html</a></b></td>
-				<td><code>❯ REPLACE-ME</code></td>
+				<td><code>❯ Normal-G2</code></td>
 			</tr>
 			<tr>
 				<td><b><a href='https://github.com/VergaJU/TechTaskInterview/blob/master/corpus/Regression_clusters.html'>Regression_clusters.html</a></b></td>
-				<td><code>❯ REPLACE-ME</code></td>
+				<td><code>❯ Cox regression</code></td>
 			</tr>
 			<tr>
 				<td><b><a href='https://github.com/VergaJU/TechTaskInterview/blob/master/corpus/Basal-G3.html'>Basal-G3.html</a></b></td>
-				<td><code>❯ REPLACE-ME</code></td>
+				<td><code>❯ Basal-G3</code></td>
 			</tr>
 			<tr>
 				<td><b><a href='https://github.com/VergaJU/TechTaskInterview/blob/master/corpus/Her2-G3.html'>Her2-G3.html</a></b></td>
-				<td><code>❯ REPLACE-ME</code></td>
+				<td><code>❯ Her2-G3</code></td>
 			</tr>
 			</table>
 		</blockquote>
@@ -433,11 +413,19 @@ Analysis:
 			<table>
 			<tr>
 				<td><b><a href='https://github.com/VergaJU/TechTaskInterview/blob/master/models/classifier_model.pth'>classifier_model.pth</a></b></td>
-				<td><code>❯ REPLACE-ME</code></td>
+				<td><code>❯ Classifiers weights</code></td>
 			</tr>
 			<tr>
 				<td><b><a href='https://github.com/VergaJU/TechTaskInterview/blob/master/models/autoencoder_model.pth'>autoencoder_model.pth</a></b></td>
-				<td><code>❯ REPLACE-ME</code></td>
+				<td><code>❯ Autoencoder weights</code></td>
+			</tr>
+			<tr>
+				<td><b><a href='https://github.com/VergaJU/TechTaskInterview/blob/master/models/standard_scaler.pkl'>standard_scaler.pkl</a></b></td>
+				<td><code>❯ StandardScaler weights</code></td>
+			</tr>
+			<tr>
+				<td><b><a href='https://github.com/VergaJU/TechTaskInterview/blob/master/models/SHAP.pkl'>SHAP.pkl</a></b></td>
+				<td><code>❯ SHAP explainer</code></td>
 			</tr>
 			</table>
 		</blockquote>
