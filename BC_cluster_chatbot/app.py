@@ -7,7 +7,7 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 from chatbot.nodes import master_node 
 from chatbot.workflow import ChatWorkflow
 #### create or load vector database:
-
+from PIL import Image
 
 from typing import TypedDict # For GraphState type hinting
 
@@ -59,6 +59,8 @@ st.set_page_config(
     menu_items=None,
 )
 
+
+
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
@@ -79,7 +81,22 @@ with st.sidebar:
     nhg = st.selectbox("Nuclear Grade", ["NA", "G1", "G2", "G3"], index=0)
     pam50 = st.selectbox("PAM50", ['NA', 'LumA', 'LumB', 'HER2', 'Basal', 'Normal'], index=0)
 
-st.title("Breast Cancer Cluster Chatbot")
+
+svg_path = "/app/chatbot/asset/logo.svg"
+with open(svg_path, "r") as f:
+    svg = f.read()
+    
+st.markdown(
+    f"""
+    <div style="display: flex; align-items: center; gap: 100px;">
+        <div style="width:75px;">{svg}</div>
+        <h1 style="margin: 0;">Breast Cancer Cluster Chatbot</h1>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
+
+
 
 st.markdown("""
 Welcome to the **Breast Cancer Cluster Chatbot** — an interactive assistant designed to help you explore and interpret **patient-specific clustering results** based on gene expression and clinical data.
