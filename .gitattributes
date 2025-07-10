@@ -3,4 +3,5 @@ models/SHAP.pkl filter=lfs diff=lfs merge=lfs -text
 models/standard_scaler.pkl filter=lfs diff=lfs merge=lfs -text
 models/autoencoder_model.pth filter=lfs diff=lfs merge=lfs -text
 models/classifier_model.pth filter=lfs diff=lfs merge=lfs -text
+models/ filter=lfs diff=lfs merge=lfs -text
 models/* filter=lfs diff=lfs merge=lfs -text
