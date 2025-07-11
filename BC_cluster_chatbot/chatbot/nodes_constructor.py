@@ -155,7 +155,6 @@ class PredictorNode(node):
     def get_node(self,state):
         """The predictor node, which is the second node in the graph. It's role is to predict the cluster of the patient and convert the notebook into an html report"""
         expression_data = state['expression_data']
-        # if expression_data is empty or not exist return "GAY"
         if expression_data is None:
             self.log_message("No expression data provided, returning empty state.")
             return state | {
