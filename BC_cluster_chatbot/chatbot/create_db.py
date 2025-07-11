@@ -29,7 +29,7 @@ DEFAULT_CHROMA_DB_DIR = '/app/chatbot/chroma_db'
 DEFAULT_EMBEDDINGS_MODEL = 'models/embedding-001'  # Google Generative AI Embeddings
 DEFAULT_CHUNK_SIZE = 1500
 DEFAULT_CHUNK_OVERLAP = 300
-K_RETRIEVAL = 2  # Number of documents to retrieve in RAG
+K_RETRIEVAL = 4  # Number of documents to retrieve in RAG
 
 class HtmlVectorDatabaseManager:
     """
