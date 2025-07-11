@@ -208,5 +208,7 @@ __marimo__/
 
 
 # data
-Data/*
+Data/*pkl
+Data/*csv
+Data/*h5ad
 notebooks/*html
