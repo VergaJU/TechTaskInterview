@@ -24,6 +24,10 @@ CHUNK_OVERLAP = int(os.getenv("CHUNK_OVERLAP", DEFAULT_CHUNK_OVERLAP))
 K_RETRIEVAL = int(os.getenv("K_RETRIEVAL", 5)) 
 
 
+if "messages" not in st.session_state:
+    st.session_state.messages = []
+
+
 if 'db_manager' not in st.session_state:
     print("Initializing HtmlVectorDatabaseManager...")
     st.session_state['db_manager'] = HtmlVectorDatabaseManager(
@@ -49,9 +53,6 @@ if 'vector_store' not in st.session_state or st.session_state['vector_store'] is
 
 
 
-
-
-
 st.set_page_config(
     page_title="Breast Cancer Cluster Chatbot",
     layout="wide",
@@ -61,17 +62,28 @@ st.set_page_config(
 
 
 
-if "messages" not in st.session_state:
-    st.session_state.messages = []
-
 # Only assign a UUID if one doesn't already exist in this session
 if "user_id" not in st.session_state:
     st.session_state.user_id = str(uuid.uuid4())
 
 
 with st.sidebar:
-    patient_expression = st.file_uploader("Patient Expression Profile: gene_id, expression", key="patient_expression", type="csv")
-    age =st.number_input("Age", min_value=0, max_value=120, value=50, step=1)
+    st.markdown("""## Patient Data Input
+    Load a .csv file with two columns: `gene_id` and `expression`""")
+
+    uploaded_file = st.file_uploader("Patient Expression Profile", key="patient_expression", type="csv")
+
+    if st.button("Load Example File", key="load_example_button"):
+        example_path = "/app/chatbot/Data/test_expression.csv"
+        if os.path.exists(example_path):
+            st.session_state.patient_expression_df = pd.read_csv(example_path)
+            st.success("Example file loaded!")
+            uploaded_file = True
+        else:
+            st.error("Example file not found.")
+            uploaded_file = None
+
+    age = st.number_input("Age", min_value=0, max_value=120, value=50, step=1)
     tumor_size = st.number_input("Tumor Size", min_value=0, max_value=150, value=15, step=1)
     lymph_node = st.selectbox("Lymph Node Status", ["NA", "Positive", "Negative"], index=0)
     er_status = st.selectbox("ER Status", ["NA", "Positive", "Negative"], index=0)
@@ -116,10 +128,15 @@ Each user session is isolated and secure. All figures and results are processed 
 """)
 
 
-
-if patient_expression:
-    patient_expression = pd.read_csv(patient_expression)[['gene_id', 'expression']]
-
+# Only parse if file is present
+if uploaded_file is not None and not isinstance(uploaded_file, bool):
+    try:
+        st.session_state.patient_expression_df = pd.read_csv(uploaded_file)
+        st.success("File successfully uploaded and loaded!")
+    except Exception as e:
+        st.error(f"Error reading file: {e}")
+        if 'patient_expression_df' in st.session_state:
+            del st.session_state.patient_expression_df
 
 clinical_data = {
     "age": age,
@@ -149,7 +166,7 @@ if question:
     st.chat_message("user").markdown(question)
     state = {
         "session_id": st.session_state.user_id,
-        "expression_data": patient_expression,
+        "expression_data": st.session_state.get('patient_expression_df', None),
         "clinical_data": clinical_data,
         "messages": question,
         "vector_db": st.session_state.get('vector_store', None),
