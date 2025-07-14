@@ -37,10 +37,12 @@ PREDICT_PROMPT: |
   - Maintain a scientific tone; avoid exaggeration or speculation.
   - If the data is unclear or contradictory, provide a nuanced interpretation rather than a strong assertion.
   - If certain elements in the context are uninformative or non-significant, omit them from the summary.
+  - **Only suggest potential clinical procedures or treatment options if there is strong support from both molecular clustering and clinical data. These suggestions must be phrased cautiously, clearly framed as exploratory or supportive, and must avoid prescriptive or deterministic language. If such support is lacking, do not speculate or suggest treatments.**
 
   Context:
   {context}
   """
+
 
 
 RAG_PROMPT : |

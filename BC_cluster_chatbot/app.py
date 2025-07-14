@@ -90,7 +90,7 @@ with st.sidebar:
     pgr_status = st.selectbox("PR Status", ["NA", "Positive", "Negative"], index=0)
     her2_status = st.selectbox("HER2 Status", ["NA", "Positive", "Negative"], index=0)
     ki67_status = st.selectbox("Ki67 Status", ["NA", "Positive", "Negative"], index=0)
-    nhg = st.selectbox("Nuclear Grade", ["NA", "G1", "G2", "G3"], index=0)
+    nhg = st.selectbox("NHG", ["NA", "G1", "G2", "G3"], index=0)
     pam50 = st.selectbox("PAM50", ['NA', 'LumA', 'LumB', 'HER2', 'Basal', 'Normal'], index=0)
 
 
@@ -128,6 +128,8 @@ Each user session is isolated and secure. All figures and results are processed 
 """)
 
 
+
+
 # Only parse if file is present
 if uploaded_file is not None and not isinstance(uploaded_file, bool):
     try:
@@ -149,6 +151,7 @@ clinical_data = {
     "nhg": nhg,
     "pam50": pam50
 }
+
 
 for msg in st.session_state.messages:
     if msg["role"] == "user":

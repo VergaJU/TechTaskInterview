@@ -162,8 +162,6 @@ class PredictorNode(node):
                 'answer': 'no',
                 'answer_source': 'predictor'
             }
-        if isinstance(expression_data, pd.DataFrame):
-            expression_data = expression_data.to_csv(index=False)
         clinical_data = state['clinical_data']
         # Compile the notebook
         session_id = state['session_id']
