@@ -2,7 +2,7 @@
 <img src="./asset/logo.svg" align="right" width="30%" style="margin: 100px 0 0 0px;">
 <h1>TechTaskInterview</h1>
 <p align="left">
-	<em><code>❯ Repository including the code for prearing to the interview with Dr. Sebastiano Panichella and Dr. Saša Miladinović </code></em>
+	<em><code>❯ Repository including the code for preparing for the interview with Dr. Sebastiano Panichella and Dr. Saša Miladinović </code></em>
 </p>
 <p align="left">
 	<img src="https://img.shields.io/github/license/VergaJU/TechTaskInterview?style=default&logo=opensourceinitiative&logoColor=white&color=3fff00" alt="license">
@@ -38,14 +38,14 @@
 
 ##  Overview
 
-Task:Bioinformatics Development & Analysis Task (AI Integration)
+Task: Bioinformatics Development & Analysis Task (AI Integration)
 
 Dataset link: [GSE96058](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE96058)
 
 Instruction:
 - Download and preprocess data
 - Perform basic quality control and normalization where needed
-- Explore patterns related to disease subtypes, treatment response, or other relevant biological variable
+- Explore patterns related to disease subtypes, treatment response, or other relevant biological variables
 
 Analysis:
 -  Apply one or more AI techniques such as:
@@ -73,19 +73,19 @@ Deliverables:
 Analysis:
 - Downloaded $log_2(FPKM)$
 - Averaged expression of replicates
-- Trained Autoencoder to obtain representative embeddings (**Supervided Learning**)
-- Clustered samples using leiden clustering and neighbrohood graph with the Python packge Scanpy (**Unsupervised Learning**)
+- Trained Autoencoder to obtain representative embeddings (**Supervised Learning**)
+- Clustered samples using Leiden clustering and neighborhood graph with the Python package Scanpy (**Unsupervised Learning**)
 - Clusters annotaton considering clinical features (PAM50, NHG), gene module scoring and GSEA (**Bioinformatics**)
     - Performed DGE with Scanpy (method='wilcoxon') to rank gene expression
-    - Ran GSEA using the prerank function from the python package gseapy
-- Fine tuning classifier using the already trained encoder and a classification head to predict the annotated clusters
+    - Ran GSEA using the prerank function from the Python package gseapy
+- Fine-tuning the classifier using the already trained encoder and a classification head to predict the annotated clusters
     - Frozen encoder weights
     - Training classification head
 - LLM Chatbot (Gemini + LangGraph) (**LLM integration**):
-    - Router node orchestrate needed nodes
-    - Predictor node classify patient dependinng on gene expression and provide detailed report including SHAP values, GSEA and clinical features.
-    - RAG provide detailed information regarding Clusters annotation and Cox regression
-    - Literature node perform GroundSearch on scientific literature regarding Breast Cancer
+    - Router node orchestrates the needed nodes
+    - Predictor node classifies patients depending on gene expression and provides a detailed report including SHAP values, GSEA, and clinical features.
+    - RAG provides detailed information regarding the  Clusters annotation and Cox regression
+    - Literature node performs GroundSearch on scientific literature regarding Breast Cancer
 
 ---
 
@@ -477,7 +477,7 @@ Install TechTaskInterview using one of the following methods:
 
 #### Data and model preparation:
 
-Prepare data, train autoencoder and obtain embeddings with:
+Prepare data, train the autoencoder, and obtain embeddings with:
 
 ```sh
 ❯ docker compose --profile torch_gpu up -d
@@ -500,7 +500,7 @@ Go to `localhost:8888` and run the notebooks:
 - Classifier_metrics.ipynb
 - Clustering_1.ipynb
 - Regression_clusters.ipynb
-- Cluster specific notebooks
+- Cluster-specific notebooks
 
 #### Training classifier:
 
@@ -520,11 +520,11 @@ Go to `localhost:8888` and run the notebooks:
 ❯ docker compose --profile chatbot up -d
 ```
 
-Go to `localhost:8890` and anjoy the notebook
+Go to `localhost:8890` and enjoy the app
 
 
 ###  Testing
-Testing not implemented yet
+Testing has not been implemented yet
 
 ---
 ##  Project Roadmap
@@ -545,7 +545,7 @@ Testing not implemented yet
 <details closed>
 <summary>Contributing Guidelines</summary>
 
-1. **Fork the Repository**: Start by forking the project repository to your github account.
+1. **Fork the Repository**: Start by forking the project repository to your GitHub account.
 2. **Clone Locally**: Clone the forked repository to your local machine using a git client.
    ```sh
    git clone https://github.com/VergaJU/TechTaskInterview
@@ -559,7 +559,7 @@ Testing not implemented yet
    ```sh
    git commit -m 'Implemented new feature x.'
    ```
-6. **Push to github**: Push the changes to your forked repository.
+6. **Push to GitHub**: Push the changes to your forked repository.
    ```sh
    git push origin new-feature-x
    ```
@@ -582,11 +582,5 @@ Testing not implemented yet
 ##  License
 
 This project is protected under the [Apache License 2.0](https://choosealicense.com/licenses) License. For more details, refer to the [Apache License 2.0](https://choosealicense.com/licenses/) file.
-
----
-
-##  Acknowledgments
-
-- List any resources, contributors, inspiration, etc. here.
 
 ---
